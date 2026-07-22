@@ -33,7 +33,7 @@ export function HeroSection() {
               ) : (
                 line
               )}
-              {i < hero.headlineLines.length - 1 && <br />}
+              {i < hero.headlineLines.length - 1 && <> </>}
             </span>
           ))}
         </h1>
@@ -81,9 +81,9 @@ export function HeroSection() {
       <div className="relative hidden lg:block bg-[#DDD8CC] overflow-hidden">
         <img src={hero.imageUrl} alt={hero.imageAlt} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-90" />
         <div className="absolute bottom-12 left-10 bg-secondary text-secondary-foreground px-5 py-4 shadow-lg" style={sharpRadius}>
-          <div className="text-3xl font-black" style={{ fontFamily: fonts.serif }}>
+          {/* <div className="text-3xl font-black" style={{ fontFamily: fonts.serif }}>
             {hero.imageBadgeTitle}
-          </div>
+          </div> */}
           <div className="text-xs tracking-widest uppercase font-semibold">{hero.imageBadgeSubtitle}</div>
         </div>
       </div>
