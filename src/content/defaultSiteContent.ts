@@ -9,7 +9,7 @@ export const defaultSiteContent: SiteContent = {
     tagline: "හරිතසුව Dehydrated Banana",
     footerBlurb:
       "Dehydrated banana from naturally ripened Sri Lankan varieties. 100% natural. No additives. Made to order.",
-    copyright: "© 2024 Harithasuwa · හරිතසුව. All rights reserved.",
+    copyright: "© 2026 Harithasuwa · හරිතසුව. All rights reserved.",
     footerTagline: "Sri Lanka · Haritha (Green) + Suwa (Healing) = Natural Healing",
   },
   navigation: [
@@ -25,8 +25,8 @@ export const defaultSiteContent: SiteContent = {
     headlineLines: ["Green", "Healing,", "Naturally."],
     headlineAccentIndex: 1,
     description: [
-      "100% natural dehydrated fruit — made to order, delivered cash on delivery. We start with Sri Lankan banana varieties and are growing into more local fruits.",
-      "Scroll down for our vision and mission — why Harithasuwa exists and what we are building toward.",
+      "100% natural dehydrated fruits, vegetables and herbs — made to order, delivered advance payment or cash on delivery. We start with Sri Lankan banana varieties and will grow into local fruits as we move forward.",
+      "Scroll down for our vision and mission",
     ],
     quote: "Let us make the world a better place, one natural snack at a time.",
     primaryCta: "Shop Products",
@@ -38,7 +38,7 @@ export const defaultSiteContent: SiteContent = {
     ],
     imageUrl: localSiteImages.hero,
     imageAlt: "Rows of dehydrated banana slices",
-    imageBadgeTitle: "Pure Banana",
+    imageBadgeTitle: "Pure Fruits",
     imageBadgeSubtitle: "Nothing Added · Ever",
   },
   visionMission: {
@@ -65,7 +65,7 @@ export const defaultSiteContent: SiteContent = {
     {
       id: "embul",
       name: "Embul Banana",
-      sinhala: "එඹුල් කෙසෙල්",
+      sinhala: "ඇඹුල් කෙසෙල්",
       description:
         "The classic sour variety — intensely flavoured with a gentle tang. Naturally ripened, dehydrated to chewy perfection. No sugar, no additives.",
       imageUrl: localSiteImages.products.embul,
@@ -92,13 +92,13 @@ export const defaultSiteContent: SiteContent = {
   ],
   productsSection: {
     topProdQuote: "Taste like no other",
-    topProdDescription: "Dehydrated banana made from naturally ripened Sri Lankan varieties — embul, seeni, and rathambala. No sugar. No preservatives. No added flavours. Just banana.",
+    topProdDescription: "Harithasuwa Dehydrated banana made from naturally ripened Sri Lankan varieties — embul, seeni, and rathambala. No sugar. No preservatives. No added flavours or colors. Just banana. Ready to eat as a snack, as a dessert, or mixed with any breakfast cereal. A fruitful and delicious experience",
     eyebrow: "හරිතසුව නිෂ්පාදන · Harithasuwa Products",
     headlineLines: ["Three Varieties of", "Dehydrated Banana"],
     headlineAccentLineIndex: 1,
     description:
-      "Naturally ripened Sri Lankan bananas — each variety with its own distinct flavour. Ready to eat as a snack, as a dessert, or mixed with any breakfast cereal. A fruitful and delicious experience",
-    weights: ["80g", "100g", "150g", "200g"],
+      "Naturally ripened Sri Lankan bananas — each variety with its own distinct flavour. ",
+    weights: ["100g", "150g", "200g"],
     defaultWeight: "100g",
     enjoyTitle: "Three Ways to Enjoy",
     enjoyItems: [
@@ -178,7 +178,7 @@ export const defaultSiteContent: SiteContent = {
     headlineAccentLineIndex: 1,
     orderBullets: [
       {
-        title: "Cash on Delivery (COD) within Sri Lanka",
+        title: "Cash on Delivery (COD) or Advanced Payment after placing order",
         body: "pay only when your order arrives at your door.",
       },
       {
@@ -186,22 +186,21 @@ export const defaultSiteContent: SiteContent = {
         body: "we produce only after you place an order, so you receive the freshest possible product.",
       },
       {
-        title: "Delivery within 2 weeks",
-        body: "island-wide delivery across Sri Lanka. Outside Sri Lanka 6-8 weeks",
+        title: "Delivery",
+        body: "2 weeks within Sri Lanka and 6-8 weeks with outside Sri Lanka",
       },
       {
-        title: "Sizes available:",
-        body: "80g, 100g, 150g, or 200g — choose the quantity of each size per variety.",
+        title: "Sizes Available:",
+        body: "100g, 150g, or 200g — choose the quantity of each size per variety.",
       },
       {
-        title: "Vacuum packing",
+        title: "Vacuum Packed",
         body: "Can be kept for more than 6 months.", 
       }
     ],
     contactDetails: [
-      { label: "Email", value: "hello@harithasuwa.lk" },
+      { label: "Email", value: "harithasuwaproducts@gmail.com" },
       { label: "Phone / WhatsApp", value: "+94 77 176 4939" },
-      { label: "Location", value: "Sri Lanka · Island-wide Delivery" },
     ],
     recipientEmail: "hello@harithasuwa.lk",
     formTitle: "Place an Order",

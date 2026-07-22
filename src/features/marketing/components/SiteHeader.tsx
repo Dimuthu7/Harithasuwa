@@ -37,11 +37,11 @@ export function SiteHeader() {
         >
           {/* Mobile & tablet: compact two-line lockup */}
           <span className="md:hidden flex flex-col gap-0.5 min-w-0 pr-1">
-            {shortTitle.sinhala ? (
-              <span className="text-[0.7rem] sm:text-xs font-semibold text-primary/75 leading-snug tracking-wide truncate">
+            {/* {shortTitle.sinhala ? (
+              <span className="text-[1.05rem] sm:text-lg font-semibold text-primary/75 leading-snug tracking-wide truncate">
                 {shortTitle.sinhala}
               </span>
-            ) : null}
+            ) : null} */}
             <span
               className="text-[1.05rem] sm:text-lg font-black text-primary leading-tight truncate"
               style={{ fontFamily: fonts.serif, letterSpacing: "-0.02em" }}
@@ -52,9 +52,9 @@ export function SiteHeader() {
 
           {/* Desktop: full bilingual title */}
           <span className="hidden md:flex flex-col leading-tight">
-            {fullTitle.sinhala ? (
-              <span className="text-xs font-semibold text-primary/70 tracking-wide">{fullTitle.sinhala}</span>
-            ) : null}
+            {/* {fullTitle.sinhala ? (
+              <span className="text-2xl font-semibold text-primary/70 tracking-wide">{fullTitle.sinhala}</span>
+            ) : null} */}
             <span
               className="text-2xl lg:text-[1.65rem] font-black text-primary"
               style={{ fontFamily: fonts.serif, letterSpacing: "-0.02em" }}

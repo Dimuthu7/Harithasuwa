@@ -45,7 +45,7 @@ export function ProductsSection() {
                 ) : (
                   line
                 )}
-                {i < productsSection.headlineLines.length - 1 && <br />}
+                {i < productsSection.headlineLines.length - 1 && <> </>}
               </span>
             ))}
           </h2>
