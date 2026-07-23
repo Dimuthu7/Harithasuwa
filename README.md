@@ -224,6 +224,14 @@ curl -i -X POST "https://YOUR-SITE.netlify.app/api/contact" \
 
 Expect `200` with `{"ok":true}` when SMTP is configured correctly.
 
+### Troubleshooting Netlify `500` on `/api/contact`
+
+1. **Env vars missing on Netlify** — Local `.env` is not uploaded. Add every `SMTP_*` key under Site configuration → Environment variables, then **redeploy**.
+2. **Gmail From / User mismatch** — `SMTP_FROM` must use the **same** address as `SMTP_USER`. Gmail rejects other From addresses.
+3. **App Password** — Use a Google App Password (16 characters). Normal account passwords fail with `EAUTH`.
+4. **Check Function logs** — Netlify → Functions → `contact` → logs for `[contact] …`.
+5. After fixing env vars, redeploy (or trigger a clear cache redeploy) so Functions pick up the new values.
+
 ---
 
 ## Deployment (Netlify)
