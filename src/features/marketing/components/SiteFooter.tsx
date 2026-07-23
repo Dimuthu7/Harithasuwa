@@ -1,5 +1,5 @@
 import { Facebook } from "lucide-react";
-import { useSiteContent } from "@/content";
+import { getVisibleNavigation, useSiteContent } from "@/content";
 import type { FooterSocialPlatform } from "@/content/types";
 import { fonts, sharpRadius } from "@/shared/constants/typography";
 import { useScrollTo } from "../hooks/useScrollTo";
@@ -20,6 +20,7 @@ const socialIconMap: Record<FooterSocialPlatform, typeof Facebook | typeof Whats
 export function SiteFooter() {
   const { content } = useSiteContent();
   const scrollTo = useScrollTo();
+  const navLinks = getVisibleNavigation(content);
 
   return (
     <footer className="bg-foreground text-background/80 py-16">
@@ -34,7 +35,7 @@ export function SiteFooter() {
           <div>
             <div className="text-[10px] tracking-widest uppercase text-background/40 mb-4">Quick Links</div>
             <div className="flex flex-col gap-2">
-              {content.navigation.map((link) => (
+              {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}

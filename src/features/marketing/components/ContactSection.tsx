@@ -5,6 +5,8 @@ import { useSiteContent } from "@/content";
 import type { ContactFieldName } from "@/content/types";
 import { submitContactForm } from "@/features/marketing/api/submitContactForm";
 import { fonts, sharpRadius } from "@/shared/constants/typography";
+import { Reveal } from "./Reveal";
+import { SectionHeading } from "./SectionHeading";
 
 const emptyFields = (): Record<ContactFieldName, string> => ({
   name: "",
@@ -44,27 +46,22 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-8 md:px-16 grid lg:grid-cols-[1fr_1fr] gap-16 items-start">
-        <div>
-          <span className="text-xs tracking-[0.2em] uppercase font-medium text-primary-foreground/60">{contact.eyebrow}</span>
-          <h2 className="text-4xl md:text-5xl font-black mt-3 mb-6 leading-tight" style={{ fontFamily: fonts.serif }}>
-            {contact.headlineLines.map((line, i) => (
-              <span key={line}>
-                {i === contact.headlineAccentLineIndex ? (
-                  <em className="not-italic text-secondary">{line}</em>
-                ) : (
-                  line
-                )}
-                {i < contact.headlineLines.length - 1 && <br />}
-              </span>
-            ))}
-          </h2>
+    <section id="contact" className="bg-primary py-24 text-primary-foreground md:py-32">
+      <div className="mx-auto grid max-w-7xl items-start gap-16 px-8 md:px-16 lg:grid-cols-[1fr_1fr]">
+        <Reveal>
+          <SectionHeading
+            eyebrow={contact.eyebrow}
+            headlineLines={contact.headlineLines}
+            accentLineIndex={contact.headlineAccentLineIndex}
+            tone="onPrimary"
+            accentClassName="text-secondary"
+            className="mb-6"
+          />
 
-          <div className="space-y-5 text-sm text-primary-foreground/80 mb-8">
+          <div className="mb-8 space-y-5 text-sm text-primary-foreground/80">
             {contact.orderBullets.map((bullet) => (
               <div key={bullet.title} className="flex gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0" />
+                <div className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary" />
                 <p>
                   <strong className="text-primary-foreground">{bullet.title}</strong> — {bullet.body}
                 </p>
@@ -75,89 +72,93 @@ export function ContactSection() {
           <div className="space-y-4 text-sm text-primary-foreground/80">
             {contact.contactDetails.map(({ label, value }) => (
               <div key={label}>
-                <span className="text-[10px] tracking-widest uppercase text-primary-foreground/40 block mb-0.5">{label}</span>
+                <span className="mb-0.5 block text-[10px] tracking-widest text-primary-foreground/40 uppercase">
+                  {label}
+                </span>
                 {value}
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <form
-          className="bg-primary-foreground/10 border border-primary-foreground/20 p-8 flex flex-col gap-5"
-          style={sharpRadius}
-          onSubmit={handleSubmit}
-          noValidate
-        >
-          <h3 className="text-xl font-black" style={{ fontFamily: fonts.serif }}>
-            {contact.formTitle}
-          </h3>
+        <Reveal delay={0.1}>
+          <form
+            className="flex flex-col gap-5 border border-primary-foreground/20 bg-primary-foreground/10 p-8"
+            style={sharpRadius}
+            onSubmit={handleSubmit}
+            noValidate
+          >
+            <h3 className="text-xl font-black" style={{ fontFamily: fonts.serif }}>
+              {contact.formTitle}
+            </h3>
 
-          {contact.formFields.map((field) => (
-            <div key={field.name}>
+            {contact.formFields.map((field) => (
+              <div key={field.name}>
+                <label
+                  htmlFor={`contact-${field.name}`}
+                  className="mb-1.5 block text-xs tracking-widest text-primary-foreground/60 uppercase"
+                >
+                  {field.label}
+                </label>
+                <input
+                  id={`contact-${field.name}`}
+                  name={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  required
+                  value={fields[field.name]}
+                  onChange={(e) => setFields((prev) => ({ ...prev, [field.name]: e.target.value }))}
+                  disabled={submitting}
+                  className="w-full border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-2.5 text-sm text-primary-foreground transition-colors placeholder:text-primary-foreground/30 focus:border-secondary focus:outline-none disabled:opacity-60"
+                  style={sharpRadius}
+                />
+              </div>
+            ))}
+
+            <div>
               <label
-                htmlFor={`contact-${field.name}`}
-                className="text-xs tracking-widest uppercase text-primary-foreground/60 block mb-1.5"
+                htmlFor="contact-order-details"
+                className="mb-1.5 block text-xs tracking-widest text-primary-foreground/60 uppercase"
               >
-                {field.label}
+                {contact.orderDetailsLabel}
               </label>
-              <input
-                id={`contact-${field.name}`}
-                name={field.name}
-                type={field.type}
-                placeholder={field.placeholder}
+              <textarea
+                id="contact-order-details"
+                name="orderDetails"
+                rows={4}
+                placeholder={contact.orderDetailsPlaceholder}
                 required
-                value={fields[field.name]}
-                onChange={(e) => setFields((prev) => ({ ...prev, [field.name]: e.target.value }))}
+                value={orderDetails}
+                onChange={(e) => setOrderDetails(e.target.value)}
                 disabled={submitting}
-                className="w-full bg-primary-foreground/10 border border-primary-foreground/25 text-primary-foreground placeholder:text-primary-foreground/30 px-4 py-2.5 text-sm focus:outline-none focus:border-secondary transition-colors disabled:opacity-60"
+                className="w-full resize-none border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-2.5 text-sm text-primary-foreground transition-colors placeholder:text-primary-foreground/30 focus:border-secondary focus:outline-none disabled:opacity-60"
                 style={sharpRadius}
               />
+              <p className="mt-1.5 text-[10px] text-primary-foreground/40">{contact.orderDetailsHint}</p>
             </div>
-          ))}
 
-          <div>
-            <label
-              htmlFor="contact-order-details"
-              className="text-xs tracking-widest uppercase text-primary-foreground/60 block mb-1.5"
-            >
-              {contact.orderDetailsLabel}
-            </label>
-            <textarea
-              id="contact-order-details"
-              name="orderDetails"
-              rows={4}
-              placeholder={contact.orderDetailsPlaceholder}
-              required
-              value={orderDetails}
-              onChange={(e) => setOrderDetails(e.target.value)}
+            <button
+              type="submit"
               disabled={submitting}
-              className="w-full bg-primary-foreground/10 border border-primary-foreground/25 text-primary-foreground placeholder:text-primary-foreground/30 px-4 py-2.5 text-sm focus:outline-none focus:border-secondary transition-colors resize-none disabled:opacity-60"
+              className="group flex w-full items-center justify-center gap-2 bg-secondary py-3.5 font-bold text-secondary-foreground transition-all hover:bg-secondary/90 disabled:pointer-events-none disabled:opacity-70"
               style={sharpRadius}
-            />
-            <p className="text-[10px] text-primary-foreground/40 mt-1.5">{contact.orderDetailsHint}</p>
-          </div>
+            >
+              {submitting ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  {contact.submitLabel}
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </>
+              )}
+            </button>
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="group w-full flex items-center justify-center gap-2 bg-secondary text-secondary-foreground font-bold py-3.5 hover:bg-secondary/90 transition-all disabled:opacity-70 disabled:pointer-events-none"
-            style={sharpRadius}
-          >
-            {submitting ? (
-              <>
-                <Loader2 size={16} className="animate-spin" />
-                Sending…
-              </>
-            ) : (
-              <>
-                {contact.submitLabel}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </>
-            )}
-          </button>
-
-          <p className="text-[10px] text-primary-foreground/40 text-center leading-relaxed">{contact.formFooter}</p>
-        </form>
+            <p className="text-center text-[10px] leading-relaxed text-primary-foreground/40">{contact.formFooter}</p>
+          </form>
+        </Reveal>
       </div>
     </section>
   );

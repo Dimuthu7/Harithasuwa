@@ -10,7 +10,6 @@ export interface NavItem {
 export interface BrandContent {
   title: string;
   titleShort: string;
-  tagline: string;
   footerBlurb: string;
   copyright: string;
   footerTagline: string;
@@ -24,10 +23,8 @@ export interface HeroContent {
   quote: string;
   primaryCta: string;
   secondaryCta: string;
-  stats: { big: string; small: string }[];
   imageUrl: string;
   imageAlt: string;
-  imageBadgeTitle: string;
   imageBadgeSubtitle: string;
 }
 
@@ -145,10 +142,23 @@ export interface FooterContent {
   storageNote: string;
 }
 
+/** Toggle which marketing sections render. Nav/footer links follow these flags. */
+export type MarketingSectionId =
+  | "hero"
+  | "visionMission"
+  | "products"
+  | "benefits"
+  | "testimonials"
+  | "contact";
+
+export type SectionVisibility = Record<MarketingSectionId, boolean>;
+
 export interface SiteContent {
   brand: BrandContent;
   navigation: NavItem[];
   orderCtaLabel: string;
+  /** Show/hide each landing section — edit in defaultSiteContent (or future CMS). */
+  sectionVisibility: SectionVisibility;
   hero: HeroContent;
   visionMission: VisionMissionContent;
   products: ProductItem[];

@@ -1,23 +1,94 @@
-
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Harithasuwa · Natural Dehydrated Fruit from Sri Lanka</title>
-      <meta name="description" content="Harithasuwa — 100% natural dehydrated banana from Sri Lankan varieties. No additives. Made to order with cash on delivery." />
-      <meta name="robots" content="noindex, nofollow" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
-      
-      <script type="module" crossorigin src="/assets/index-CwLhu_8T.js"></script>
-      <link rel="stylesheet" crossorigin href="/assets/index-jahfMmmX.css">
-    </head>
-
-    <body>
-      
-      <div id="root"></div>
-      
-    </body>
-  </html>
-  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harithasuwa · Natural Dehydrated Fruit from Sri Lanka</title>
+    <meta
+      name="description"
+      content="Harithasuwa — 100% natural dehydrated banana from Sri Lankan varieties. No additives. Made to order with cash on delivery."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: #f5f0e8;
+      }
+      #root {
+        height: 100%;
+      }
+      #hs-boot-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        background: #f5f0e8;
+        color: #2d6a4f;
+        font-family: Georgia, "Times New Roman", serif;
+        opacity: 1;
+        transition: opacity 0.42s ease;
+        pointer-events: all;
+      }
+      #hs-boot-splash.hs-boot-splash--hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #hs-boot-splash .hs-spin {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 2px solid rgba(45, 106, 79, 0.25);
+        border-top-color: #2d6a4f;
+        border-radius: 9999px;
+        animation: hs-spin 0.9s linear infinite;
+      }
+      #hs-boot-splash .hs-title {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      #hs-boot-splash .hs-sub {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(45, 106, 79, 0.55);
+      }
+      @keyframes hs-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #hs-boot-splash .hs-spin {
+          animation: none;
+        }
+        #hs-boot-splash {
+          transition: none;
+        }
+      }
+      html.hs-loading,
+      html.hs-loading body {
+        overflow: hidden;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DZS-AvdC.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DJM8UptK.css">
+  </head>
+  <body>
+    <div id="hs-boot-splash" aria-hidden="true">
+      <div class="hs-spin"></div>
+      <p class="hs-title">Harithasuwa</p>
+      <p class="hs-sub">Natural · Healing</p>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>
