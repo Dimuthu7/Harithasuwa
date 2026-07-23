@@ -36,7 +36,16 @@ export function AdminDashboardPage() {
             <dd>{content.contact.contactDetails.find((d) => d.label === "Email")?.value}</dd>
           </div>
           <div>
-            <dt className="text-muted-foreground">Sections</dt>
+            <dt className="text-muted-foreground">Visible sections</dt>
+            <dd>
+              {Object.entries(content.sectionVisibility)
+                .filter(([, on]) => on)
+                .map(([id]) => id)
+                .join(" · ") || "None"}
+            </dd>
+          </div>
+          <div>
+            <dt className="text-muted-foreground">Nav links</dt>
             <dd>{content.navigation.map((n) => n.label).join(" · ")}</dd>
           </div>
         </dl>

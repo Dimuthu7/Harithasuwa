@@ -6,7 +6,6 @@ export const defaultSiteContent: SiteContent = {
   brand: {
     title: "හරිතසුව නිෂ්පාදන · Harithasuwa Products",
     titleShort: "හරිතසුව · Harithasuwa",
-    tagline: "හරිතසුව Dehydrated Banana",
     footerBlurb:
       "Dehydrated banana from naturally ripened Sri Lankan varieties. 100% natural. No additives. Made to order.",
     copyright: "© 2026 Harithasuwa · හරිතසුව. All rights reserved.",
@@ -20,6 +19,19 @@ export const defaultSiteContent: SiteContent = {
     { id: "contact", label: "Contact" },
   ],
   orderCtaLabel: "Order Now",
+  /**
+   * Customer-facing section toggles.
+   * Set any flag to `false` to hide that section (and its nav/footer link).
+   * Example: testimonials starts hidden until you have real reviews.
+   */
+  sectionVisibility: {
+    hero: true,
+    visionMission: true,
+    products: true,
+    benefits: true,
+    testimonials: false,
+    contact: true,
+  },
   hero: {
     eyebrow: "100% Natural · No Additives",
     headlineLines: ["Green", "Healing,", "Naturally."],
@@ -31,14 +43,8 @@ export const defaultSiteContent: SiteContent = {
     quote: "Let us make the world a better place, one natural snack at a time.",
     primaryCta: "Shop Products",
     secondaryCta: "Vision & Mission",
-    stats: [
-      { big: "Zero", small: "Additives" },
-      { big: "COD", small: "Delivery" },
-      { big: "Make to", small: "Order" },
-    ],
     imageUrl: localSiteImages.hero,
     imageAlt: "Rows of dehydrated banana slices",
-    imageBadgeTitle: "Pure Fruits",
     imageBadgeSubtitle: "Nothing Added · Ever",
   },
   visionMission: {

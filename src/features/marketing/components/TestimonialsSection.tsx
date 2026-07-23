@@ -1,5 +1,7 @@
 import { useSiteContent } from "@/content";
-import { fonts, sharpRadius } from "@/shared/constants/typography";
+import { sharpRadius } from "@/shared/constants/typography";
+import { Reveal } from "./Reveal";
+import { SectionHeading } from "./SectionHeading";
 import { StarRow } from "./StarRow";
 
 export function TestimonialsSection() {
@@ -7,38 +9,33 @@ export function TestimonialsSection() {
   const { testimonials } = content;
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-8 md:px-16">
-        <div className="text-center mb-16">
-          <span className="text-xs tracking-[0.2em] uppercase font-medium text-primary/70">{testimonials.eyebrow}</span>
-          <h2 className="text-4xl md:text-5xl font-black text-foreground mt-3" style={{ fontFamily: fonts.serif }}>
-            {testimonials.headlineLines.map((line, i) => (
-              <span key={line}>
-                {i === testimonials.headlineAccentLineIndex ? (
-                  <em className="not-italic text-primary">{line}</em>
-                ) : (
-                  line
-                )}
-                {i < testimonials.headlineLines.length - 1 && <br />}
-              </span>
-            ))}
-          </h2>
-        </div>
+    <section id="testimonials" className="bg-background py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-8 md:px-16">
+        <Reveal>
+          <SectionHeading
+            eyebrow={testimonials.eyebrow}
+            headlineLines={testimonials.headlineLines}
+            accentLineIndex={testimonials.headlineAccentLineIndex}
+            align="center"
+            className="mb-16"
+          />
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.items.map((t) => (
-            <div
-              key={t.id}
-              className="bg-card p-8 flex flex-col gap-5 border border-border hover:border-primary/40 transition-colors"
-              style={sharpRadius}
-            >
-              <StarRow count={t.stars} />
-              <p className="text-sm text-foreground/80 leading-relaxed flex-1 italic">&ldquo;{t.body}&rdquo;</p>
-              <div>
-                <div className="font-semibold text-sm text-foreground">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.role}</div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {testimonials.items.map((t, i) => (
+            <Reveal key={t.id} delay={0.08 * i}>
+              <div
+                className="flex flex-col gap-5 border border-border bg-card p-8 transition-colors hover:border-primary/40"
+                style={sharpRadius}
+              >
+                <StarRow count={t.stars} />
+                <p className="flex-1 text-sm leading-relaxed text-foreground/80 italic">&ldquo;{t.body}&rdquo;</p>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
